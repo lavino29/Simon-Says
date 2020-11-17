@@ -15,38 +15,37 @@ const mediun = 50;
 const colors = ["blue", "yellow", "red", "green"];
 let hard = 100;
 let flag = false;
+let flagStart = true;
 let array_principal = [];
 let array_principal2 = [];
 let contador = 1;
 let array_click = [];
 let bandera = 0;
 let users = [
-  { name: 'jose', pts: 100 },
-  {name: 'rhanna', pts: 5},
-  { name: 'luis', pts: 15 },
+  { name: "jose", pts: 100 },
+  { name: "rhanna", pts: 5 },
+  { name: "luis", pts: 15 },
 ];
 let user = { name: "", pts: 0 };
 //--------------------------------
-/* LOCAL STORAGE */ 
+/* LOCAL STORAGE */
 //--------------------------------
-window.addEventListener('DOMContentLoaded',()=>{
-  const ui = new UI()
-  if(localStorage.length>0){
-    for(let i = 0 ; i< localStorage.length ;i++){
-     let value = localStorage.key(i)
-    let result = localStorage.getItem(value)
-    users.push({name:value, pts:result})
-    
+window.addEventListener("DOMContentLoaded", () => {
+  const ui = new UI();
+  if (localStorage.length > 0) {
+    for (let i = 0; i < localStorage.length; i++) {
+      let value = localStorage.key(i);
+      let result = localStorage.getItem(value);
+      users.push({ name: value, pts: result });
     }
-    
-    const result = ui.rankingUsers(users)
-    table.appendChild(result)
-  }else{
-    
-    const result = ui.rankingUsers(users)
-      table.appendChild(result)
+
+    const result = ui.rankingUsers(users);
+    table.appendChild(result);
+  } else {
+    const result = ui.rankingUsers(users);
+    table.appendChild(result);
   }
-})
+});
 //--------------------------------
 /* ----- Funcion Random  -------*/
 //--------------------------------
@@ -62,25 +61,27 @@ const random = () => {
 /* BOTON DE INICIO DE LA APLICACION */
 startButton.addEventListener("click", () => {
   const ui = new UI();
-  if (flag == true) {
+  if (flag == true && flagStart == true) {
     ui.paintAllColors(array_principal2, contador);
+    flagStart = false;
   }
 });
 //--------------------------------
 /* BOTON DE LOGIN */
 //--------------------------------
 login.addEventListener("click", (e) => {
-  
   e.preventDefault();
-  user.name = input_name.value;
-  form_main.classList.add("active_form");
-  setTimeout(() => {
-    reglas.children[0].textContent = `${user.name}`;
-    reglas.children[0].style.position = "absolute;";
-    reglas.classList.add("active_reglas");
-  }, 900);
+
   for (let i = 0; i < form.length; i++) {
     if (form[i].checked == true) {
+      user.name = input_name.value;
+      form_main.classList.add("active_form");
+      setTimeout(() => {
+        reglas.children[0].textContent = `${user.name}`;
+        reglas.children[0].style.position = "absolute;";
+        reglas.classList.add("active_reglas");
+      }, 900);
+      flagStart = true;
       if (form[i].value == "easy") {
         array_principal = [];
         while (array_principal.length < easy) {
@@ -142,20 +143,20 @@ const validateClick = (click) => {
       flag == true
     ) {
       const userSave = new User();
-      userSave.save(user.name,array_click.length);
-      users.push({name:user.name,pts:array_click.length})
-      const result = ui.rankingUsers(users)
-      table.innerHTML =` <tr class="tr">
+      userSave.save(user.name, array_click.length);
+      users.push({ name: user.name, pts: array_click.length });
+      const result = ui.rankingUsers(users);
+      table.innerHTML = ` <tr class="tr">
       <th class="th">#</th>
       <th class="th">Name</th>
       <th class="th">record</th>
-  </tr>`
-      table.appendChild(result)
+  </tr>`;
+      table.appendChild(result);
+      flagStart = true;
       bandera = 0;
       array_click = [];
       contador = 1;
       alert("has perdido");
-      
     }
   }
 };
@@ -216,7 +217,6 @@ class UI {
           ) {
             this.deleteColors();
             setTimeout(() => {
-            
               if (colorChildren[i].className === array_principal2[number]) {
                 if (colorChildren[i].className == "yellow") {
                   colorChildren[i].classList.add("active_yellow");
@@ -234,7 +234,6 @@ class UI {
             }, 400);
           } else if (colorChildren[i].className === array_principal2[number]) {
             if (this.deleteColors() == true) {
-              
               if (colorChildren[i].className == "blue") {
                 colorChildren[i].classList.add("active_blue");
               }
@@ -272,29 +271,27 @@ class UI {
   }
 
   rankingUsers(data) {
-   
-    const result1  = data.sort((a,b)=> b.pts - a.pts) 
+    const result1 = data.sort((a, b) => b.pts - a.pts);
     const fragment = document.createDocumentFragment();
-    result1.forEach((result,i) => {
-      
+    result1.forEach((result, i) => {
       const tr = document.createElement("tr");
       const td = document.createElement("td");
       const td1 = document.createElement("td");
       const td2 = document.createElement("td");
-      td.classList.add('td')
-      td1.classList.add('td')
-      td2.classList.add('td')
+      td.classList.add("td");
+      td1.classList.add("td");
+      td2.classList.add("td");
       tr.appendChild(td2);
       tr.appendChild(td);
       tr.appendChild(td1);
-      
-      td2.textContent = `${i+1}`
+
+      td2.textContent = `${i + 1}`;
       td.textContent = `${result.name}`;
       td1.textContent = `${result.pts}`;
       fragment.appendChild(tr);
-      
     });
 
     return fragment;
   }
 }
+
