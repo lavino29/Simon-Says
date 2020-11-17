@@ -16,3 +16,14 @@
     }
 
 }
+@media (max-width:320px){
+    .app_container{
+        width: 100%;
+        height: 60%;
+    }
+    .green,.red,.blue,.yellow{
+        width: 132px;
+        height: 132px;
+    }
+
+}
