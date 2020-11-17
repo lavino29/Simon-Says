@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./responsive.css">
+    <script src="https://kit.fontawesome.com/2c36e9b7b1.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <header class="red_social">
+        <div class="container_header">
+            
+        <a href="https://www.linkedin.com/in/jose-juarez-80888218a/" ><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/lavino29"><i class="fab fa-github"></i></a>
+        <a href=""><i class="fab fa-instagram"></i></a>
+        </div>
+        
+    </header>
+    <main class="main_container">
+        
+        <div class="ranking">
+            <h2 class="tittle_ranking color_principal">
+                The best rankings</h2>
+                <table class="table" id="table">
+                    <tr class="tr">
+                        <th class="th">#</th>
+                        <th class="th">Name</th>
+                        <th class="th">record</th>
+                    </tr>
+
+                </table>
+        </div>
+        <div class="app_container">
+            <div class="colors" id="colors">
+                <div id="green" class="green"></div>
+                <div id="red" class="red"></div>
+                <div id="blue" class="blue"></div>
+                <div id="yellow" class="yellow"></div>
+            </div>
+            <start class="container_start" id="container_start">
+                <div class="triangulo"></div>
+                <div class="start" ></div>
+            </start>
+            
+        </div>
+        <div class="turn" id="turn"><span>Your turn</span></div>
+        <div class="login">
+            <h2 class="color_principal">Welcome <span></span>  to game of Simon says</h2>
+            <form action="" class="form_login" id="form_login" name="forms">
+                <input class="input_name" id="input_name" type="text" placeholder="enter name">
+                <div class="difficulty">
+                    <span class="color_text"> Easy </span><input class="radio" type="radio" required name="difficulty" value="easy">
+                    <span class="color_text"> Mediun </span><input  class="radio" type="radio" required name="difficulty" value="mediun">
+                    <span class="color_text"> Hard </span> <input  class="radio" type="radio" required name="difficulty" value="hard">
+                </div>
+                    
+
+                <input type="submit" value="Enter" id="login_btn">
+            </form>
+
+            <div class="reglas">
+                <span class="user"></span>
+                <p class="color_principal">LAS REGLAS Y DIFICULTADES</p>
+                <P class="overflow-ellipsis">el juego consiste en memorizar <span id="text_description">los colores en el orden especifico hay 3 niveles 'easy' consta con memorizar 20 movimientos
+                    mediun costa con 50, el nivel hard es sin limite si quieres probar tu habilidades este es tu nivel </span>   </P>
+                  <a class="color_principal" id="read_more">leer mas..</a>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="./app.js" type="module"></script>
+</body>
+
+</html>
