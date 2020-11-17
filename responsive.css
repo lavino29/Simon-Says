@@ -10,5 +10,22 @@
 
 }
 
+@media (max-width:767px){
+    .main_container{
+       height: 100%;
+       width: 90%;
+       flex-wrap: wrap;
+        /* display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, 1fr); */
+        overflow: scroll;
+    }
+    .ranking ,.login{
+        margin: 1rem 0 1rem 0;
+        width: 90%;
+        height: 60%;
+        box-sizing: content-box;
+    }
 
+}
 
